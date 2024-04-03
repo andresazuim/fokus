@@ -2,13 +2,23 @@ const html =document.querySelector('html')
 const focoBt = document.querySelector('.app__card-button--foco')
 const curtoBt = document.querySelector('.app__card-button--curto')
 const longoBt = document.querySelector('.app__card-button--longo')
-const startPause = document.querySelector('.app__card-primary-button');
+const startPauseBt = document.querySelector('.app__card-primary-button');
 const timer = document.querySelector('#timer');
 const imagem = document.querySelector('.app__image')
 const texto = document.querySelector('.app__title')
 const botoes = document.querySelectorAll('.app__card-button')
 const musicaFocoInput = document.querySelector('#alternar-musica')
 const musica = new Audio('/sons/luna-rise-part-one.mp3')
+const audioIniciar = new Audio('/sons/play.wav')
+const audioPausar = new Audio('/sons/pause.mp3')
+const audioFinal = new Audio('/sons/beep.mp3')
+
+let tempoDecorridoEmSegundos = 5
+let intervaloId = null
+const duracaoFoco = 1500; 
+const duracaoDescansoCurto = 300; 
+const duracaoDescansoLongo = 900; 
+
 musica.loop = true
 
 musicaFocoInput.addEventListener('change', ()=>{
@@ -18,10 +28,6 @@ musicaFocoInput.addEventListener('change', ()=>{
         musica.pause()
     }
 })
-
-const duracaoFoco = 1500; 
-const duracaoDescansoCurto = 300; 
-const duracaoDescansoLongo = 900; 
 
 
 focoBt.addEventListener('click', ()=>{
@@ -72,4 +78,34 @@ function alterarContexto(contexto){
             break  
     }
 
+}
+
+const contagemRegressiva = ()=>{
+    if(tempoDecorridoEmSegundos <= 0){
+        audioFinal.play()
+        alert('Tempo Finalizado!')
+        zerar()
+        return
+    }
+
+    tempoDecorridoEmSegundos -= 1
+    console.log('temporisador: ' + tempoDecorridoEmSegundos)
+}
+
+startPauseBt.addEventListener('click', iniciarOuPausar)
+
+function iniciarOuPausar(){
+    
+    if(intervaloId){
+        audioPausar.play()
+        zerar()
+        return
+    }
+    audioIniciar.play()
+    intervaloId = setInterval(contagemRegressiva, 1000)
+}
+
+function zerar(){
+    clearInterval(intervaloId)
+    intervaloId = null
 }
