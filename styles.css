@@ -5,9 +5,6 @@
     --fundo-card-timer: rgba(20, 68, 128, 0.30);
     --lils: #B872FF;
     --linear-botes: linear-gradient(180deg, #B872FF 0%, #144480 100%);
-    --azul-profundo: #01080E;
-    --fundo-card: rgba(255, 255, 255, 0.50);
-    --fundo-card-concludo: rgba(0, 244, 191, 0.40);
 }
 
 [data-contexto="foco"] {
@@ -230,7 +227,19 @@ h1, h2, h3, h4, h5, h6 {
     visibility: hidden;
 }
 
-/* fim - toggle */
+
+:root {
+    --color-primary: #123456;
+    --color-secondary: #FFF;
+    --azul-royal: #144480;
+    --fundo-card-timer: rgba(20, 68, 128, 0.30);
+    --lils: #B872FF;
+    --linear-botes: linear-gradient(180deg, #B872FF 0%, #144480 100%);
+    --azul-profundo: #01080E;
+    --fundo-card: rgba(255, 255, 255, 0.50);
+    --fundo-card-concludo: rgba(0, 244, 191, 0.40);
+}
+
 /* dropdown */
 .dropdown-container {
     position: relative;
@@ -272,12 +281,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: 0.8rem;
 }
 
-/* Para Tablets */
-@media (max-width: 1024px) and (min-width: 768px) {
-    .app__section-banner-container {
-        width: 48rem;
-    }
-}
+/* fim - dropdown */
 
 /* Para Celulares */
 @media (max-width: 767px) {
@@ -408,7 +412,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .app__section-task-list-item-active.app__section-task-list-item {
-    border: 2px solid #FFF;
+    border: 2px solid #ffffff;
 }
 
 .app__section-task-list-item-complete .app__section-task-icon-status circle {
@@ -504,4 +508,39 @@ h1, h2, h3, h4, h5, h6 {
     color: #e6e6e6;
     opacity: 0.8;
     cursor: not-allowed;
+}
+
+.dropdown-container {
+    background-color: #ffffff28;
+    display: flex;
+    align-content: center;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+
+/* fim - toggle */
+
+/* Para Tablets */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .app__section-banner-container {
+        width: 48rem;
+    }
+}
+
+/* Para Celulares */
+@media (max-width: 767px) {
+    .app__section-banner-container {
+        width: 32rem;
+    }
+
+    .app__title {
+        font-size: 2.6rem;
+    }
+
+    .app__card-timer {
+        font-size: 6rem;
+    }
 }
